@@ -31,16 +31,8 @@
     </div>
   </div>
 <script>
-  // Endereco fixo: sempre leva ao link atual do painel (o link muda quando o computador do painel reinicia).
-  var RAW = "https://raw.githubusercontent.com/Andrey310397/aj-painel/main/LINK.md";
-  fetch(RAW + "?t=" + Date.now(), {cache:"no-store"})
-    .then(function(r){ return r.text(); })
-    .then(function(t){
-      var m = t.match(/https:\/\/[a-z0-9-]+\.trycloudflare\.com/);
-      if(!m) throw new Error("sem link");
-      location.replace(m[0] + (location.hash || ""));
-    })
-    .catch(function(){ document.getElementById("m").style.display = "none"; document.getElementById("o").style.display = "block"; });
+// Endereco fixo do painel (copia na nuvem: funciona mesmo com o computador do painel desligado).
+location.replace("https://aj-painel.aj-painel-nuvem.workers.dev/" + (location.hash || ""));
 </script>
 </body>
 </html>
